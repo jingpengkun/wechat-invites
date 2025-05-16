@@ -1,0 +1,45 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 头部 -->
+  <view class="header"></view>
+
+  <!-- 事件列表 -->
+  <view class="events-list">
+    <block wx:if="{{events.length > 0}}">
+      <view 
+        wx:for="{{events}}" 
+        wx:key="id" 
+        class="event-card" 
+        bindtap="goToEvent" 
+        data-id="{{item.id}}"
+        style="background: {{item.background}}"
+      >
+        <view class="event-content">
+          <view class="event-title">{{item.title}}</view>
+          
+          <view class="event-details">
+            <view class="event-detail">
+              <text class="event-icon">📅</text>
+              <text>{{item.date}}</text>
+            </view>
+            
+            <view class="event-detail">
+              <text class="event-icon">📍</text>
+              <text>{{item.location}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <block wx:else>
+      <view class="empty-state">
+        <text>暂无活动</text>
+        <text>点击右下角"+"创建新活动</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 右下角悬浮创建按钮 -->
+  <view class="fab-create-btn" bindtap="createEvent">+</view>
+</view>

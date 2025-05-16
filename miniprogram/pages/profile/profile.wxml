@@ -1,0 +1,28 @@
+<!-- /pages/profile/profile.wxml -->
+<view class="container">
+  <view class="user-info">
+    <view class="avatar-container">
+      <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+    </view>
+    <view class="user-detail">
+      <text class="nickname">{{userInfo.nickName || '未登录'}}</text>
+      <text class="status">{{isLoggedIn ? '已登录' : '未登录'}}</text>
+    </view>
+  </view>
+
+  <view class="action-buttons">
+    <button wx:if="{{!isLoggedIn}}" class="login-btn" bindtap="handleLogin">登录</button>
+    <button wx:if="{{isLoggedIn}}" class="logout-btn" bindtap="handleLogout">退出登录</button>
+  </view>
+
+  <view class="info-section">
+    <view class="info-item">
+      <text class="label">用户ID</text>
+      <text class="value">{{userId || '未登录'}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">登录时间</text>
+      <text class="value">{{loginTime || '未登录'}}</text>
+    </view>
+  </view>
+</view> 

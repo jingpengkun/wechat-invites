@@ -1,0 +1,65 @@
+<!-- pages/event/event.wxml -->
+<view class="container">
+  <!-- 头部 -->
+  <view class="header"></view>
+
+  <view class="main-content">
+    <view class="event-card-detail">
+      <!-- 预览按钮悬浮在卡片右上角 -->
+      <view class="preview-btn">预览</view>
+
+      <view class="text-3xl text-black">{{event.title}}</view>
+
+      <!-- 日期时间 -->
+      <view class="event-meta">
+        <view class="flex items-center gap-3">
+          <text class="icon text-black">📅</text>
+          <text class="text-black">{{event.date}}</text>
+        </view>
+
+        <!-- 位置 -->
+        <view class="flex items-center gap-3 event-location">
+          <text class="icon text-black">📍</text>
+          <text class="text-black">{{event.location}}</text>
+        </view>
+      </view>
+
+      <!-- 分隔线和组织者信息 -->
+      <view class="pt-4 border-t event-organizer">
+        <view class="flex items-center gap-2 mb-4">
+          <view class="avatar">
+            <text>{{event.organizer[0]}}</text>
+          </view>
+          <view>
+            <text class="text-black">组织者：{{event.organizer}}</text>
+          </view>
+        </view>
+
+        <!-- 活动描述 -->
+        <text class="text-black mb-6 event-description" style="opacity: 0.8;">{{event.description}}</text>
+
+        <!-- 参与者信息 -->
+        <view class="flex items-center gap-2 mb-4 event-attendees">
+          <text class="icon text-black">👥</text>
+          <text class="text-black">{{event.attendees.length}} 人参加</text>
+        </view>
+
+        <!-- 参与者头像 -->
+        <view class="flex mb-6">
+          <block wx:for="{{event.attendees}}" wx:key="id">
+            <view class="avatar" style="margin-left: {{index > 0 ? '-8px' : '0'}}; border: 2px solid #eee;">
+              <text>{{item.name}}</text>
+            </view>
+          </block>
+        </view>
+
+        <!-- 操作按钮 -->
+        <view class="event-actions">
+          <button class="flex-1 btn btn-primary" bindtap="attend">参加</button>
+          <button class="flex-1 btn btn-outline" bindtap="decline">不参加</button>
+          <button class="flex-1 btn btn-outline" bindtap="maybe">可能</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

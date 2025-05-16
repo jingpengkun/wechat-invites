@@ -1,0 +1,122 @@
+/* pages/event/event.wxss */
+.icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.px-6 {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* 按钮样式覆盖 */
+button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  line-height: normal;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+button::after {
+  border: none;
+}
+
+/* 头像列表样式 */
+.avatar {
+  position: relative;
+  z-index: 1;
+}
+
+.avatar:not(:first-child) {
+  margin-left: -8px;
+}
+
+page, .container {
+  background-color: #fff;
+}
+
+.container {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-card-detail {
+  width: 92vw;
+  max-width: 600rpx;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.10);
+  border: 1px solid #f0f0f0;
+  padding: 40rpx 24rpx 32rpx 24rpx;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+}
+
+.event-card-detail .text-3xl {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.event-card-detail .event-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.event-card-detail .event-location {
+  margin-bottom: 8rpx;
+}
+
+.event-card-detail .event-description {
+  margin: 20rpx 0 12rpx 0;
+  line-height: 1.7;
+}
+
+.event-card-detail .event-organizer {
+  margin-bottom: 12rpx;
+}
+
+.event-card-detail .event-attendees {
+  margin-bottom: 12rpx;
+}
+
+.event-card-detail .event-actions {
+  margin-top: 24rpx;
+  display: flex;
+  gap: 16rpx;
+}
+
+.preview-btn {
+  position: absolute;
+  top: 32rpx;
+  right: 32rpx;
+  background: rgba(0,0,0,0.08);
+  color: #333;
+  border-radius: 16rpx;
+  padding: 8rpx 28rpx;
+  font-size: 28rpx;
+  z-index: 10;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+}

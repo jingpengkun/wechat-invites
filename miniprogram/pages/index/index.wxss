@@ -1,0 +1,103 @@
+/* pages/index/index.wxss */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.create-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #4158D0, #C850C0);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.events-list {
+  padding: 16px;
+}
+
+.event-card {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  height: 180px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.event-content {
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.event-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.event-icon {
+  font-size: 16px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: #888888;
+  text-align: center;
+  gap: 8px;
+}
+
+/* 悬浮创建按钮 */
+.fab-create-btn {
+  position: fixed;
+  right: 40rpx;
+  bottom: 120rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #4158D0, #C850C0);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  box-shadow: 0 4rpx 16rpx rgba(65, 88, 208, 0.2);
+  z-index: 100;
+}
