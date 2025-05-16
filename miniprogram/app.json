@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/event/event",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/create/create",
+    "pages/edit/edit"
   ],
   "window": {
     "backgroundTextStyle": "light",

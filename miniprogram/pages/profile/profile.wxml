@@ -11,7 +11,7 @@
   </view>
 
   <view class="action-buttons">
-    <button wx:if="{{!isLoggedIn}}" class="login-btn" bindtap="handleLogin">登录</button>
+    <button wx:if="{{!isLoggedIn}}" class="login-btn" open-type="getUserInfo" bindgetuserinfo="handleLogin">微信一键登录</button>
     <button wx:if="{{isLoggedIn}}" class="logout-btn" bindtap="handleLogout">退出登录</button>
   </view>
 

@@ -32,45 +32,46 @@
 }
 
 .event-card {
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 16px;
-  height: 180px;
-  position: relative;
+  margin: 32rpx 24rpx 0 24rpx;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0,0,0,0.10);
+  border: 1px solid #f0f0f0;
+  padding: 40rpx 24rpx 32rpx 24rpx;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  gap: 24rpx;
+  min-height: 160rpx;
 }
 
 .event-content {
-  padding: 16px;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
+  background: none;
+  padding: 0;
 }
 
 .event-title {
-  font-size: 20px;
+  font-size: 36rpx;
   font-weight: bold;
-  color: white;
-  margin-bottom: 8px;
+  color: #222;
+  margin-bottom: 12rpx;
 }
 
 .event-details {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8rpx;
 }
 
 .event-detail {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: white;
-  font-size: 14px;
+  gap: 12rpx;
+  color: #555;
+  font-size: 28rpx;
 }
 
 .event-icon {
-  font-size: 16px;
+  font-size: 30rpx;
 }
 
 .empty-state {
@@ -88,7 +89,7 @@
 .fab-create-btn {
   position: fixed;
   right: 40rpx;
-  bottom: 120rpx;
+  bottom: 200rpx;
   width: 80rpx;
   height: 80rpx;
   border-radius: 50%;
@@ -100,4 +101,28 @@
   font-size: 48rpx;
   box-shadow: 0 4rpx 16rpx rgba(65, 88, 208, 0.2);
   z-index: 100;
+}
+
+.event-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8rpx 0 32rpx 0;
+  gap: 32rpx;
+}
+
+.tab-item {
+  font-size: 32rpx;
+  color: #888;
+  padding: 12rpx 36rpx;
+  border-radius: 32rpx;
+  background: #f5f5f5;
+  transition: all 0.2s;
+}
+
+.tab-item.active {
+  color: #fff;
+  background: linear-gradient(90deg, #4158D0, #C850C0);
+  font-weight: bold;
+  box-shadow: 0 2rpx 8rpx rgba(65,88,208,0.08);
 }

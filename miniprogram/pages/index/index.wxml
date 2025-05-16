@@ -3,11 +3,17 @@
   <!-- 头部 -->
   <view class="header"></view>
 
+  <!-- 活动筛选tab -->
+  <view class="event-tabs">
+    <view class="tab-item {{activeTab === 'upcoming' ? 'active' : ''}}" data-tab="upcoming" bindtap="switchTab">临近活动</view>
+    <view class="tab-item {{activeTab === 'past' ? 'active' : ''}}" data-tab="past" bindtap="switchTab">过往活动</view>
+  </view>
+
   <!-- 事件列表 -->
   <view class="events-list">
-    <block wx:if="{{events.length > 0}}">
+    <block wx:if="{{activeTab === 'upcoming' && upcomingEvents.length > 0}}">
       <view 
-        wx:for="{{events}}" 
+        wx:for="{{upcomingEvents}}" 
         wx:key="id" 
         class="event-card" 
         bindtap="goToEvent" 
@@ -16,13 +22,11 @@
       >
         <view class="event-content">
           <view class="event-title">{{item.title}}</view>
-          
           <view class="event-details">
             <view class="event-detail">
               <text class="event-icon">📅</text>
               <text>{{item.date}}</text>
             </view>
-            
             <view class="event-detail">
               <text class="event-icon">📍</text>
               <text>{{item.location}}</text>
@@ -31,8 +35,31 @@
         </view>
       </view>
     </block>
-    
-    <block wx:else>
+    <block wx:if="{{activeTab === 'past' && pastEvents.length > 0}}">
+      <view 
+        wx:for="{{pastEvents}}" 
+        wx:key="id" 
+        class="event-card" 
+        bindtap="goToEvent" 
+        data-id="{{item.id}}"
+        style="background: {{item.background}}"
+      >
+        <view class="event-content">
+          <view class="event-title">{{item.title}}</view>
+          <view class="event-details">
+            <view class="event-detail">
+              <text class="event-icon">📅</text>
+              <text>{{item.date}}</text>
+            </view>
+            <view class="event-detail">
+              <text class="event-icon">📍</text>
+              <text>{{item.location}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{(activeTab === 'upcoming' && upcomingEvents.length === 0) || (activeTab === 'past' && pastEvents.length === 0)}}">
       <view class="empty-state">
         <text>暂无活动</text>
         <text>点击右下角"+"创建新活动</text>

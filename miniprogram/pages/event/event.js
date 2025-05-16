@@ -6,26 +6,30 @@ Page({
   },
 
   onLoad: function(options) {
-    // 获取事件ID
     const eventId = options.id;
-    
-    // 模拟获取事件数据
-    // 在实际应用中，这里应该调用API获取事件数据
-    this.setData({
-      event: {
+    // 尝试从首页缓存获取活动详情
+    const pages = getCurrentPages();
+    let event = null;
+    if (pages.length > 1) {
+      const prevPage = pages[pages.length - 2];
+      const allEvents = (prevPage.data.upcomingEvents || []).concat(prevPage.data.pastEvents || []);
+      event = allEvents.find(ev => ev.id === eventId);
+    }
+    if (!event) {
+      // 兜底：找不到则用默认数据
+      event = {
         id: eventId,
-        title: "生日派对",
-        date: "2025年4月26日 18:00",
-        location: "家中",
+        title: "活动",
+        date: "",
+        location: "",
         background: "linear-gradient(to bottom, #4158D0, #C850C0)",
-        description: "欢迎参加我的生日派对！我们将有美食、游戏和音乐。期待您的到来！",
+        description: "",
         organizer: "无名称",
-        attendees: [
-          { id: "1", name: "A" },
-          { id: "2", name: "B" },
-          { id: "3", name: "C" },
-        ],
-      },
+        attendees: []
+      };
+    }
+    this.setData({
+      event,
       loading: false
     });
   },
@@ -58,6 +62,12 @@ Page({
     wx.showToast({
       title: '已确认可能参加',
       icon: 'none'
+    });
+  },
+
+  onEdit: function() {
+    wx.navigateTo({
+      url: '/pages/edit/edit?id=' + this.data.event.id
     });
   }
 })

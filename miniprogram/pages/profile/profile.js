@@ -26,36 +26,31 @@ Page({
     });
   },
 
-  handleLogin: function() {
+  handleLogin: function(e) {
     var that = this;
-    wx.getUserProfile({
-      desc: '用于完善用户资料',
-      success: function(res) {
-        var userInfo = res.userInfo;
-        var loginTime = new Date().toLocaleString();
-        var userId = 'user_' + Date.now();
-        wx.setStorageSync('userInfo', userInfo);
-        wx.setStorageSync('loginTime', loginTime);
-        wx.setStorageSync('userId', userId);
-        that.setData({
-          userInfo: userInfo,
-          isLoggedIn: true,
-          loginTime: loginTime,
-          userId: userId
-        });
-        wx.showToast({
-          title: '登录成功',
-          icon: 'success'
-        });
-      },
-      fail: function(err) {
-        console.error('登录失败：', err);
-        wx.showToast({
-          title: '登录失败',
-          icon: 'error'
-        });
-      }
-    });
+    if (e.detail.userInfo) {
+      var userInfo = e.detail.userInfo;
+      var loginTime = new Date().toLocaleString();
+      var userId = 'user_' + Date.now();
+      wx.setStorageSync('userInfo', userInfo);
+      wx.setStorageSync('loginTime', loginTime);
+      wx.setStorageSync('userId', userId);
+      that.setData({
+        userInfo: userInfo,
+        isLoggedIn: true,
+        loginTime: loginTime,
+        userId: userId
+      });
+      wx.showToast({
+        title: '登录成功',
+        icon: 'success'
+      });
+    } else {
+      wx.showToast({
+        title: '登录失败',
+        icon: 'error'
+      });
+    }
   },
 
   handleLogout: function() {

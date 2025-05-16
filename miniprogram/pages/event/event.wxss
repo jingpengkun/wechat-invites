@@ -44,7 +44,7 @@ page, .container {
 .container {
   min-height: 100vh;
   box-sizing: border-box;
-  padding-top: env(safe-area-inset-top);
+  padding-top: max(env(safe-area-inset-top), 44px);
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -112,6 +112,19 @@ page, .container {
   position: absolute;
   top: 32rpx;
   right: 32rpx;
+  background: rgba(0,0,0,0.08);
+  color: #333;
+  border-radius: 16rpx;
+  padding: 8rpx 28rpx;
+  font-size: 28rpx;
+  z-index: 10;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+}
+
+.edit-btn {
+  position: absolute;
+  top: 32rpx;
+  right: 120rpx;
   background: rgba(0,0,0,0.08);
   color: #333;
   border-radius: 16rpx;

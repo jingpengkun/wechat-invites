@@ -7,6 +7,7 @@
     <view class="event-card-detail">
       <!-- 预览按钮悬浮在卡片右上角 -->
       <view class="preview-btn">预览</view>
+      <view class="edit-btn" bindtap="onEdit">编辑</view>
 
       <view class="text-3xl text-black">{{event.title}}</view>
 
