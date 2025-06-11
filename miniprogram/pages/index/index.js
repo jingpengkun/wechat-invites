@@ -32,20 +32,29 @@ Page({
           title: '生日派对',
           date: '2025年4月26日 18:00',
           location: '家中',
-          background: 'linear-gradient(to bottom, #4158D0, #C850C0)'
+          organizer: '小明',
+          userId: 'demo_user',
+          description: '一起庆祝生日，欢迎参加！',
+          background: 'linear-gradient(135deg, #e9efff 0%, #dbeafe 100%)'
         },
         {
           id: '2',
           title: '团队聚会',
           date: '2025年5月15日 19:30',
           location: '公司会议室',
-          background: 'linear-gradient(to bottom, #00DBDE, #FC00FF)'
+          organizer: '小红',
+          userId: 'demo_user',
+          description: '团队成员聚会，增进感情。',
+          background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
         },
         {
           id: '3',
           title: '周末郊游',
           date: '2025年6月10日 09:00',
           location: '城市公园',
+          organizer: '小王',
+          userId: 'demo_user',
+          description: '周末一起去郊游吧！',
           background: 'linear-gradient(to bottom, #0093E9, #80D0C7)'
         },
         {
@@ -53,6 +62,9 @@ Page({
           title: '音乐节',
           date: '2025年7月20日 16:00',
           location: '市体育馆',
+          organizer: '小李',
+          userId: 'demo_user',
+          description: '音乐节狂欢夜。',
           background: 'linear-gradient(to bottom, #f7971e, #ffd200)'
         },
         {
@@ -60,6 +72,9 @@ Page({
           title: '家庭聚餐',
           date: '2025年8月5日 12:00',
           location: '外婆家餐厅',
+          organizer: '小张',
+          userId: 'demo_user',
+          description: '家庭成员聚餐。',
           background: 'linear-gradient(to bottom, #f953c6, #b91d73)'
         },
         {
@@ -67,7 +82,10 @@ Page({
           title: '毕业典礼',
           date: '2025年9月1日 09:30',
           location: '大学礼堂',
-          background: 'linear-gradient(to bottom, #43cea2, #185a9d)'
+          organizer: '校长',
+          userId: 'demo_user',
+          description: '见证人生重要时刻。',
+          background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)'
         }
       ];
       wx.setStorageSync('events', events);

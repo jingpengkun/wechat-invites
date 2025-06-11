@@ -21,15 +21,15 @@
         </view>
       </view>
       <view class="event-detail event-organizer">
-        <image class="create-organizer-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}"></image>
+        <view class="avatar"></view>
         <text class="event-organizer-text">组织者：{{userInfo.nickName || '未登录'}}</text>
       </view>
       <textarea class="event-description create-desc" placeholder="添加描述..." bindinput="onDescInput" value="{{desc}}"></textarea>
+      <view class="event-actions">
+        <button class="preview-btn" bindtap="onPreview">预览卡片</button>
+        <button class="create-submit-btn" bindtap="onSubmit"><text class="create-submit-text">创建活动</text></button>
+      </view>
     </view>
-  </view>
-  <view class="create-btn-group">
-    <button class="preview-btn" bindtap="onPreview">预览卡片</button>
-    <button class="create-submit-btn" bindtap="onSubmit"><text class="create-submit-text">创建活动</text></button>
   </view>
 </view>
 

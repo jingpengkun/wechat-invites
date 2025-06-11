@@ -28,12 +28,17 @@ Page({
       wx.showToast({ title: '请填写完整信息', icon: 'none' });
       return;
     }
+    const userInfo = wx.getStorageSync('userInfo') || {};
+    const userId = wx.getStorageSync('userId') || '';
     // 生成新活动对象
     const newEvent = {
       id: 'event_' + Date.now(),
       title,
       date: date + ' ' + time,
       location,
+      organizer: userInfo.nickName || '未登录',
+      userId: userId,
+      description: '',
       background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
     };
     // 读取本地events

@@ -225,9 +225,10 @@ page, .container {
   display: flex;
   flex-direction: column;
   gap: 24rpx;
-  min-height: 160rpx;
+  width: 88vw;
   max-width: 600rpx;
-  width: 92vw;
+  height: 76vh;
+  min-height: 600rpx;
   align-items: flex-start;
   justify-content: center;
 }
