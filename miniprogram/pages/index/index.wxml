@@ -16,7 +16,7 @@
         wx:for="{{upcomingEvents}}" 
         wx:key="id" 
         class="event-card" 
-        bindtap="goToEvent" 
+        bindtap="onCardClick" 
         data-id="{{item.id}}"
         style="background: {{item.background}}"
       >
@@ -40,7 +40,7 @@
         wx:for="{{pastEvents}}" 
         wx:key="id" 
         class="event-card" 
-        bindtap="goToEvent" 
+        bindtap="onCardClick" 
         data-id="{{item.id}}"
         style="background: {{item.background}}"
       >
@@ -69,4 +69,16 @@
 
   <!-- 右下角悬浮创建按钮 -->
   <view class="fab-create-btn" bindtap="createEvent">+</view>
+
+  <view class="event-modal" wx:if="{{showEventModal}}">
+    <view class="event-modal-mask" bindtap="closeEventModal"></view>
+    <view class="event-modal-bigcard">
+      <view class="event-modal-bg"></view>
+      <view class="event-modal-main">
+        <view class="event-modal-title">{{modalEvent.title}}</view>
+        <view class="event-modal-date">{{modalEvent.date}}</view>
+      </view>
+      <view class="event-modal-close-btn" bindtap="closeEventModal">×</view>
+    </view>
+  </view>
 </view>

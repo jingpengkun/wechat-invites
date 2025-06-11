@@ -1,6 +1,91 @@
+.profile-container {
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 120rpx;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 0 0 32rpx 32rpx;
+  box-shadow: 0 4rpx 24rpx rgba(65, 88, 208, 0.04);
+  padding: 48rpx 32rpx 32rpx 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.profile-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  border: 2rpx solid #eee;
+  margin-right: 32rpx;
+  background: #fafbfc;
+}
+
+.profile-userinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.profile-nickname {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #222;
+}
+
+.profile-desc {
+  font-size: 28rpx;
+  color: #888;
+}
+
+.profile-section {
+  background: #fff;
+  border-radius: 24rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  margin: 0 24rpx 32rpx 24rpx;
+  padding: 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.profile-cell {
+  display: flex;
+  align-items: center;
+  padding: 36rpx 32rpx;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-cell:last-child {
+  border-bottom: none;
+}
+
+.profile-cell-icon {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 28rpx;
+}
+
+.profile-cell-title {
+  font-size: 32rpx;
+  color: #333;
+  flex: 1;
+}
+
+.profile-cell-arrow {
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 12rpx;
+}
+
 .container {
   padding: 30rpx;
-  background-color: #f5f5f5;
+  background-color: #f8f8f8;
   min-height: 100vh;
 }
 
@@ -12,6 +97,12 @@
   align-items: center;
   margin-bottom: 30rpx;
   box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.user-info-hover {
+  box-shadow: 0 4rpx 24rpx rgba(65, 88, 208, 0.10);
 }
 
 .avatar-container {
@@ -19,10 +110,10 @@
 }
 
 .avatar {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 60rpx;
-  border: 2rpx solid #eee;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+  border: 4rpx solid #f0f0f0;
 }
 
 .user-detail {
@@ -30,8 +121,8 @@
 }
 
 .nickname {
-  font-size: 36rpx;
-  font-weight: 500;
+  font-size: 38rpx;
+  font-weight: 600;
   color: #333;
   display: block;
   margin-bottom: 10rpx;
@@ -39,46 +130,60 @@
 
 .status {
   font-size: 28rpx;
-  color: #666;
+  color: #888;
 }
 
 .action-buttons {
-  margin: 30rpx 0;
+  margin: 40rpx 0;
 }
 
 .login-btn, .logout-btn {
   width: 100%;
-  height: 88rpx;
-  line-height: 88rpx;
+  height: 96rpx;
+  line-height: 96rpx;
   text-align: center;
-  border-radius: 44rpx;
-  font-size: 32rpx;
+  border-radius: 48rpx;
+  font-size: 34rpx;
   margin-bottom: 20rpx;
+  font-weight: 500;
 }
 
 .login-btn {
   background-color: #07c160;
   color: #fff;
+  box-shadow: 0 4rpx 16rpx rgba(7, 193, 96, 0.3);
 }
 
 .logout-btn {
+  width: 90%;
+  margin: 60rpx auto 0 auto;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 44rpx;
+  font-size: 32rpx;
   background-color: #f5f5f5;
   color: #666;
   border: 1rpx solid #ddd;
+  display: block;
+  position: fixed;
+  left: 5%;
+  bottom: 80rpx;
+  z-index: 10;
 }
 
 .info-section {
   background-color: #fff;
-  border-radius: 16rpx;
-  padding: 30rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
 }
 
 .info-item {
   display: flex;
   justify-content: space-between;
-  padding: 20rpx 0;
-  border-bottom: 1rpx solid #eee;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
 }
 
 .info-item:last-child {
@@ -87,10 +192,134 @@
 
 .label {
   color: #666;
-  font-size: 28rpx;
+  font-size: 30rpx;
 }
 
 .value {
   color: #333;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.activity-entry {
+  display: flex;
+  justify-content: space-between;
+  margin: 32rpx 0 0 0;
+  gap: 32rpx;
+}
+
+.activity-item {
+  flex: 1;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  padding: 32rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #4158D0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.activity-item:active {
+  box-shadow: 0 4rpx 24rpx rgba(65, 88, 208, 0.10);
+}
+
+.activity-modal {
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  z-index: 999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.modal-mask {
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+.modal-content {
+  position: relative;
+  width: 92vw;
+  max-width: 600rpx;
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  box-shadow: 0 -4rpx 24rpx rgba(0,0,0,0.10);
+  padding: 40rpx 24rpx 32rpx 24rpx;
+  min-height: 400rpx;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.modal-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 32rpx;
+  margin-bottom: 24rpx;
+}
+
+.modal-tab {
+  font-size: 30rpx;
+  color: #888;
+  padding: 12rpx 36rpx;
+  border-radius: 32rpx;
+  background: #f5f5f5;
+  transition: all 0.2s;
+}
+
+.modal-tab.active {
+  color: #fff;
+  background: linear-gradient(90deg, #4158D0, #C850C0);
+  font-weight: bold;
+  box-shadow: 0 2rpx 8rpx rgba(65,88,208,0.08);
+}
+
+.modal-list {
+  min-height: 200rpx;
+}
+
+.modal-event-item {
+  padding: 18rpx 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 30rpx;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-event-date {
+  color: #888;
+  font-size: 26rpx;
+}
+
+.modal-empty {
+  text-align: center;
+  color: #bbb;
+  margin: 32rpx 0;
+}
+
+.modal-close-btn {
+  margin: 32rpx auto 0 auto;
+  width: 80%;
+  height: 72rpx;
+  line-height: 72rpx;
+  background: #f5f5f5;
+  color: #666;
+  border-radius: 36rpx;
+  text-align: center;
   font-size: 28rpx;
-} 
+  border: none;
+}
+
+.logout-cell .logout-title {
+  color: #e14c4c;
+  font-weight: bold;
+}
+.logout-cell .profile-cell-icon {
+  filter: grayscale(1) brightness(0.7) sepia(1) hue-rotate(-30deg) saturate(4) brightness(1.2);
+}

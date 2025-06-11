@@ -1,24 +1,36 @@
 <!-- 创建活动页面 -->
-<view class="container">
-  <view class="form-section">
-    <view class="form-label">活动名称</view>
-    <input class="form-input" placeholder="请输入活动名称" bindinput="onTitleInput" value="{{title}}" />
+<view class="create-bg-gradient">
+  <view class="create-bg-top">
+    <view class="create-bg-upload" bindtap="onChooseBg">
+      <image class="create-bg-upload-icon" src="/images/add-bg.png"></image>
+      <text class="create-bg-upload-text">添加背景</text>
+    </view>
   </view>
-
-  <view class="form-section">
-    <view class="form-label">活动时间</view>
-    <picker mode="date" value="{{date}}" start="2023-01-01" end="2030-12-31" bindchange="onDateChange">
-      <view class="form-picker">{{date || '请选择日期'}}</view>
-    </picker>
-    <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="onTimeChange">
-      <view class="form-picker">{{time || '请选择时间'}}</view>
-    </picker>
+  <view class="event-card create-card">
+    <view class="event-content">
+      <input class="event-title create-title" placeholder="活动标题" bindinput="onTitleInput" value="{{title}}" />
+      <view class="event-details">
+        <view class="event-detail">
+          <text class="event-icon">📅</text>
+          <input class="event-input" placeholder="日期" bindinput="onDateInput" value="{{date}}" />
+          <input class="event-input" placeholder="时间" bindinput="onTimeInput" value="{{time}}" />
+        </view>
+        <view class="event-detail">
+          <text class="event-icon">📍</text>
+          <input class="event-input" placeholder="地点" bindinput="onLocationInput" value="{{location}}" />
+        </view>
+      </view>
+      <view class="event-detail event-organizer">
+        <image class="create-organizer-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}"></image>
+        <text class="event-organizer-text">组织者：{{userInfo.nickName || '未登录'}}</text>
+      </view>
+      <textarea class="event-description create-desc" placeholder="添加描述..." bindinput="onDescInput" value="{{desc}}"></textarea>
+    </view>
   </view>
-
-  <view class="form-section">
-    <view class="form-label">活动地点</view>
-    <input class="form-input" placeholder="请输入活动地点" bindinput="onLocationInput" value="{{location}}" />
+  <view class="create-btn-group">
+    <button class="preview-btn" bindtap="onPreview">预览卡片</button>
+    <button class="create-submit-btn" bindtap="onSubmit"><text class="create-submit-text">创建活动</text></button>
   </view>
+</view>
 
-  <button class="submit-btn" bindtap="onSubmit">创建活动</button>
-</view> 
+<!-- 日期/时间选择器和位置选择可用原生picker或弹窗实现，后续可补充 --> 

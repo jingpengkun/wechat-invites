@@ -2,35 +2,42 @@
 Page({
   data: {
     event: null,
-    loading: true
+    loading: true,
+    allEvents: [],
+    currentIndex: 0
   },
 
   onLoad: function(options) {
     const eventId = options.id;
-    // 尝试从首页缓存获取活动详情
+    // 获取所有活动
     const pages = getCurrentPages();
-    let event = null;
+    let allEvents = [];
     if (pages.length > 1) {
       const prevPage = pages[pages.length - 2];
-      const allEvents = (prevPage.data.upcomingEvents || []).concat(prevPage.data.pastEvents || []);
-      event = allEvents.find(ev => ev.id === eventId);
+      allEvents = (prevPage.data.upcomingEvents || []).concat(prevPage.data.pastEvents || []);
     }
-    if (!event) {
-      // 兜底：找不到则用默认数据
-      event = {
-        id: eventId,
-        title: "活动",
-        date: "",
-        location: "",
-        background: "linear-gradient(to bottom, #4158D0, #C850C0)",
-        description: "",
-        organizer: "无名称",
-        attendees: []
-      };
+    // 如果allEvents为空，则从本地加载
+    if (!allEvents.length) {
+      allEvents = wx.getStorageSync('events') || [];
+    }
+    let currentIndex = 0;
+    if (allEvents.length > 0) {
+      currentIndex = allEvents.findIndex(ev => ev.id === eventId);
+      if (currentIndex < 0) currentIndex = 0;
     }
     this.setData({
-      event,
+      allEvents,
+      currentIndex,
+      event: allEvents[currentIndex] || null,
       loading: false
+    });
+  },
+
+  onSwiperChange: function(e) {
+    const idx = e.detail.current;
+    this.setData({
+      currentIndex: idx,
+      event: this.data.allEvents[idx] || null
     });
   },
 

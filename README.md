@@ -1,4 +1,29 @@
-# 活动邀请函微信小程序
+# 活动邀请小程序
+
+## 项目简介
+这是一个微信小程序，用于创建和管理活动邀请。项目基于TypeScript和Sass开发。
+
+## 功能
+- 首页：展示活动列表
+- 活动：查看活动详情
+- 个人中心：用户信息管理
+- 创建活动：发起新活动
+- 编辑活动：修改活动信息
+
+## 页面结构
+- `pages/index/index`：首页
+- `pages/event/event`：活动详情
+- `pages/profile/profile`：个人中心
+- `pages/create/create`：创建活动
+- `pages/edit/edit`：编辑活动
+
+## 依赖
+- `miniprogram-api-typings`：用于TypeScript支持
+
+## 运行方式
+1. 使用微信开发者工具导入项目
+2. 运行`npm install`安装依赖
+3. 点击编译运行
 
 ## 项目简介
 

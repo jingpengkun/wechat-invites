@@ -1,0 +1,20 @@
+<view class="my-events-container">
+  <view class="my-events-tabs">
+    <view class="my-events-tab {{activeTab==='created'?'active':''}}" data-type="created" bindtap="switchTab">发起的活动</view>
+    <view class="my-events-tab {{activeTab==='joined'?'active':''}}" data-type="joined" bindtap="switchTab">参与的活动</view>
+  </view>
+  <view class="my-events-list">
+    <block wx:if="{{activeTab==='created'}}">
+      <block wx:for="{{createdEvents}}" wx:key="id">
+        <view class="my-event-item">{{item.title}}<text class="my-event-date">{{item.date}}</text></view>
+      </block>
+      <view wx:if="{{createdEvents.length===0}}" class="my-events-empty">暂无发起的活动</view>
+    </block>
+    <block wx:if="{{activeTab==='joined'}}">
+      <block wx:for="{{joinedEvents}}" wx:key="id">
+        <view class="my-event-item">{{item.title}}<text class="my-event-date">{{item.date}}</text></view>
+      </block>
+      <view wx:if="{{joinedEvents.length===0}}" class="my-events-empty">暂无参与的活动</view>
+    </block>
+  </view>
+</view> 

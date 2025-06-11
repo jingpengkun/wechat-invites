@@ -1,28 +1,70 @@
 <!-- /pages/profile/profile.wxml -->
-<view class="container">
-  <view class="user-info">
-    <view class="avatar-container">
-      <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
-    </view>
-    <view class="user-detail">
-      <text class="nickname">{{userInfo.nickName || '未登录'}}</text>
-      <text class="status">{{isLoggedIn ? '已登录' : '未登录'}}</text>
+<view class="profile-container">
+  <!-- 顶部用户信息区 -->
+  <view class="profile-header" bindtap="handleLogin">
+    <image class="profile-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+    <view class="profile-userinfo">
+      <text class="profile-nickname">{{isLoggedIn ? userInfo.nickName : '登录/注册'}}</text>
+      <text class="profile-desc">{{isLoggedIn ? '欢迎使用活动邀请' : '点击登录体验更多功能'}}</text>
     </view>
   </view>
 
-  <view class="action-buttons">
-    <button wx:if="{{!isLoggedIn}}" class="login-btn" open-type="getUserInfo" bindgetuserinfo="handleLogin">微信一键登录</button>
-    <button wx:if="{{isLoggedIn}}" class="logout-btn" bindtap="handleLogout">退出登录</button>
+  <!-- 功能区块1：我的活动 -->
+  <view class="profile-section">
+    <view class="profile-cell" bindtap="goToMyEvents" data-type="created">
+      <image class="profile-cell-icon" src="/images/activity-created.png"></image>
+      <text class="profile-cell-title">发起的活动</text>
+      <image class="profile-cell-arrow" src="/images/arrow-right.png"></image>
+    </view>
+    <view class="profile-cell" bindtap="goToMyEvents" data-type="joined">
+      <image class="profile-cell-icon" src="/images/activity-joined.png"></image>
+      <text class="profile-cell-title">参与的活动</text>
+      <image class="profile-cell-arrow" src="/images/arrow-right.png"></image>
+    </view>
   </view>
 
-  <view class="info-section">
-    <view class="info-item">
-      <text class="label">用户ID</text>
-      <text class="value">{{userId || '未登录'}}</text>
+  <!-- 功能区块2：其他功能（可扩展） -->
+  <view class="profile-section">
+    <view class="profile-cell">
+      <image class="profile-cell-icon" src="/images/notice.png"></image>
+      <text class="profile-cell-title">消息通知</text>
+      <image class="profile-cell-arrow" src="/images/arrow-right.png"></image>
     </view>
-    <view class="info-item">
-      <text class="label">登录时间</text>
-      <text class="value">{{loginTime || '未登录'}}</text>
+    <view class="profile-cell">
+      <image class="profile-cell-icon" src="/images/privacy.png"></image>
+      <text class="profile-cell-title">隐私条款</text>
+      <image class="profile-cell-arrow" src="/images/arrow-right.png"></image>
+    </view>
+    <view wx:if="{{isLoggedIn}}" class="profile-cell logout-cell" bindtap="handleLogout">
+      <image class="profile-cell-icon" src="/images/logout.png"></image>
+      <text class="profile-cell-title logout-title">退出登录</text>
+      <image class="profile-cell-arrow" src="/images/arrow-right.png"></image>
+    </view>
+  </view>
+
+  <!-- 活动tab弹窗（复用原有） -->
+  <view class="activity-modal" wx:if="{{showActivityModal}}">
+    <view class="modal-mask" bindtap="closeActivityModal"></view>
+    <view class="modal-content">
+      <view class="modal-tabs">
+        <view class="modal-tab {{activityTab==='created'?'active':''}}" data-type="created" bindtap="switchActivityTab">发起的活动</view>
+        <view class="modal-tab {{activityTab==='joined'?'active':''}}" data-type="joined" bindtap="switchActivityTab">参与的活动</view>
+      </view>
+      <view class="modal-list">
+        <block wx:if="{{activityTab==='created'}}">
+          <block wx:for="{{createdEvents}}" wx:key="id">
+            <view class="modal-event-item">{{item.title}}<text class="modal-event-date">{{item.date}}</text></view>
+          </block>
+          <view wx:if="{{createdEvents.length===0}}" class="modal-empty">暂无发起的活动</view>
+        </block>
+        <block wx:if="{{activityTab==='joined'}}">
+          <block wx:for="{{joinedEvents}}" wx:key="id">
+            <view class="modal-event-item">{{item.title}}<text class="modal-event-date">{{item.date}}</text></view>
+          </block>
+          <view wx:if="{{joinedEvents.length===0}}" class="modal-empty">暂无参与的活动</view>
+        </block>
+      </view>
+      <view class="modal-close-btn" bindtap="closeActivityModal">关闭</view>
     </view>
   </view>
 </view> 
